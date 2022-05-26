@@ -7,8 +7,12 @@ CREATE TABLE sportsman (
     passport VARCHAR(350),
     average_competition_place INT,
     biography TEXT,
-    video_presentation VARCHAR(1000),
-    
+    video_presentation VARCHAR(1000)
 )
 
-SELECT 
+SELECT sportsman, COUNT(*)
+FROM Partakers
+GROUP BY sportsman
+ORDER BY COUNT(*) DESC
+INNER JOIN Sportsman
+ON Partakers.sportsman = Sportsman.id
